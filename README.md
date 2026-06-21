@@ -1,6 +1,6 @@
 # phishing-url-detector-
 # Phishing URL Detector  
-# Phishing URL Detector
+
 
 An offline phishing URL risk analyzer written in Python.
 
