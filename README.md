@@ -61,11 +61,3 @@ This is not a replacement for browser protections, DNS filtering, email security
 
 Only analyze URLs as text. Do not open suspicious links in your browser. If you expand this project later, use a controlled lab environment and avoid fetching unknown pages directly.
 
-## Good Portfolio Improvements
-
-- Add a Flask or FastAPI web interface
-- Store scan history in SQLite
-- Add CSV export for reports
-- Add a screenshot-safe mode that never loads remote resources
-- Integrate a trusted reputation API, such as Google Safe Browsing, with clear rate-limit handling
-- Train a small ML model using URL-only features and compare it against the heuristic score
