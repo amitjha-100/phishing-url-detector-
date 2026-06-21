@@ -1,0 +1,11 @@
+# Safe-looking examples
+https://www.google.com/account/about/
+https://www.microsoft.com/en-us/security
+
+# Suspicious examples for testing the detector
+http://paypal-login-security-update.example.xyz/verify/account
+https://paypa1.com/signin
+http://192.168.0.50/login/update-password
+https://bit.ly/free-gift-card
+https://google.com@evil-login.example.top/secure/confirm
+https://example.com/downloads/security-update.exe

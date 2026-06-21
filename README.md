@@ -1,38 +1,71 @@
-# Phishing URL Detector  
-An offline phishing URL risk analyzer written in Python.
+# Phishing URL Detector
+
+A small offline cybersecurity project that analyzes URLs and explains why a link may be risky. It is built with Python standard-library modules only, so it does not need internet access or package installation.
 
 ## Features
 
-* URL normalization
-* Suspicious TLD detection
-* Brand impersonation detection
-* Typosquatting detection
-* URL shortener detection
-* Punycode detection
-* Executable download detection
-* Risk scoring
+- URL normalization for links without a scheme
+- Risk score from 0 to 100
+- Human-readable verdict: low, medium, or high risk
+- Checks for suspicious TLDs, raw IP hosts, URL shorteners, punycode domains, userinfo tricks, long URLs, encoded characters, risky file extensions, suspicious keywords, and brand impersonation
+- CLI output and JSON output
+- Unit tests included
 
-## Installation
+## Run
 
-```bash
-git clone https://github.com/YOUR_USERNAME/phishing-url-detector.git
-cd phishing-url-detector
-python phishing_detector.py google.com
+```powershell
+python phishing_detector.py "http://paypal-login-security-update.example.xyz/verify/account"
 ```
 
-## Example
+Analyze multiple URLs:
 
-```bash
-python phishing_detector.py https://paypal-login.xyz/login
+```powershell
+python phishing_detector.py --file sample_urls.txt
 ```
 
-Output:
+JSON output:
+
+```powershell
+python phishing_detector.py --file sample_urls.txt --json
+```
+
+Run tests:
+
+```powershell
+python -m unittest test_phishing_detector.py
+```
+
+## Example Output
 
 ```text
-Score: 68/100
+URL: http://paypal-login-security-update.example.xyz/verify/account
+Normalized: http://paypal-login-security-update.example.xyz/verify/account
+Host: paypal-login-security-update.example.xyz
+Registered domain: example.xyz
+Score: 64/100
 Verdict: High risk
+Findings:
+  - [MEDIUM] +12: No HTTPS - Login or payment pages should use HTTPS.
+  - [MEDIUM] +10: Risky top-level domain - The '.xyz' TLD appears often in low-reputation campaigns.
+  - [MEDIUM] +14: Multiple suspicious keywords - Found phishing-themed words: account, login, security, update, verify.
+  - [HIGH] +28: Possible brand impersonation - Mentions 'paypal' while using domain 'example.xyz', not an official known domain.
 ```
 
-## Disclaimer
+## How It Works
 
-This project uses heuristic analysis and is intended for educational purposes. It is not a replacement for commercial threat intelligence feeds.
+The detector uses explainable heuristics instead of live threat intelligence. That makes it useful as a learning project because every score can be traced back to visible URL features.
+
+This is not a replacement for browser protections, DNS filtering, email security gateways, or real threat-intelligence feeds. Treat the result as a triage signal, not a final security decision.
+
+## Safe Use
+
+Only analyze URLs as text. Do not open suspicious links in your browser. If you expand this project later, use a controlled lab environment and avoid fetching unknown pages directly.
+
+## Good Portfolio Improvements
+
+- Add a Flask or FastAPI web interface
+- Store scan history in SQLite
+- Add CSV export for reports
+- Add a screenshot-safe mode that never loads remote resources
+- Integrate a trusted reputation API, such as Google Safe Browsing, with clear rate-limit handling
+- Train a small ML model using URL-only features and compare it against the heuristic score
