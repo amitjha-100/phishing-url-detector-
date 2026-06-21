@@ -1,7 +1,4 @@
-
 # Phishing URL Detector  
-
-
 An offline phishing URL risk analyzer written in Python.
 
 ## Features
