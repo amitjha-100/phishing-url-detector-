@@ -59,5 +59,5 @@ This is not a replacement for browser protections, DNS filtering, email security
 
 ## Safe Use
 
-Only analyze URLs as text. Do not open suspicious links in your browser. If you expand this project later, use a controlled lab environment and avoid fetching unknown pages directly.
+Only analyze URLs as text. Do not open suspicious links in your browser. use a controlled lab environment and avoid fetching unknown pages directly.
 
